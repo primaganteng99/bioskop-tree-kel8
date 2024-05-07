@@ -24,6 +24,10 @@ int main() {
                 pesanTiket(bioskop, waktu, jumlahTiket);
                 break;
             case 3:
+                editFilm(bioskop);
+                editWaktuTayang(bioskop);
+                break;
+            case 4:
                 deallocBioskop(bioskop);
                 printf("Keluar dari sistem.\n");
                 return 0;

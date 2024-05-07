@@ -64,3 +64,30 @@ void deallocBioskop(Node *film) {
     }
 }
 
+void editFilm(Node *film) {
+    printf("Masukkan judul film baru: ");
+    scanf(" %[^\n]s", film->judul); // Membaca string dengan spasi
+    printf("Judul film telah diubah menjadi '%s'\n", film->judul);
+}
+
+void editWaktuTayang(Node *film) {
+    int idx;
+    printf("Pilih indeks waktu tayang yang ingin diubah: ");
+    for (int i = 0; i < film->jumlahAnak; i++) {
+        printf("%d. %s, Kursi: %d\n", i + 1, film->waktuTayang[i].waktuMulai, film->waktuTayang[i].totalKursi);
+    }
+    scanf("%d", &idx);
+    idx--;
+    if (idx >= 0 && idx < film->jumlahAnak) {
+        printf("Masukkan waktu tayang baru (format JJ:MM): ");
+        scanf("%s", film->waktuTayang[idx].waktuMulai);
+        printf("Masukkan total kursi: ");
+        scanf("%d", &film->waktuTayang[idx].totalKursi);
+        film->waktuTayang[idx].sisaKursi = film->waktuTayang[idx].totalKursi; // Reset sisa kursi
+        printf("Waktu tayang diindeks %d telah diupdate.\n", idx + 1);
+    } else {
+        printf("Indeks tidak valid.\n");
+    }
+}
+
+

@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o body.o ihsan.o loginAdmin.o menuApk.o
-LINKOBJ  = main.o body.o ihsan.o loginAdmin.o menuApk.o
+OBJ      = main.o modul/body.o modul/ihsan.o modul/loginAdmin.o modul/menuApk.o
+LINKOBJ  = main.o modul/body.o modul/ihsan.o modul/loginAdmin.o modul/menuApk.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -27,14 +27,14 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-body.o: body.cpp
-	$(CPP) -c body.cpp -o body.o $(CXXFLAGS)
+modul/body.o: modul/body.cpp
+	$(CPP) -c modul/body.cpp -o modul/body.o $(CXXFLAGS)
 
-ihsan.o: ihsan.cpp
-	$(CPP) -c ihsan.cpp -o ihsan.o $(CXXFLAGS)
+modul/ihsan.o: modul/ihsan.cpp
+	$(CPP) -c modul/ihsan.cpp -o modul/ihsan.o $(CXXFLAGS)
 
-loginAdmin.o: loginAdmin.cpp
-	$(CPP) -c loginAdmin.cpp -o loginAdmin.o $(CXXFLAGS)
+modul/loginAdmin.o: modul/loginAdmin.cpp
+	$(CPP) -c modul/loginAdmin.cpp -o modul/loginAdmin.o $(CXXFLAGS)
 
-menuApk.o: menuApk.cpp
-	$(CPP) -c menuApk.cpp -o menuApk.o $(CXXFLAGS)
+modul/menuApk.o: modul/menuApk.cpp
+	$(CPP) -c modul/menuApk.cpp -o modul/menuApk.o $(CXXFLAGS)

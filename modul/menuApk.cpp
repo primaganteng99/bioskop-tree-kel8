@@ -5,15 +5,17 @@
 
 int mainMenu(){
 	
- 	int pilihan;
-	 printf("\nSistem Pemesanan Tiket Bioskop\n");
-  	 printf("1. Tampilkan film yang tersedia\n");
-     printf("2. Pesan tiket\n");
-	 printf("3. Keluar\n");
-  	 printf("Masukkan pilihan Anda: ");
-     scanf("%d", &pilihan);
-     return pilihan;
-    }
+    int pilihan;
+
+    printf("\nSistem Pemesanan Tiket Bioskop\n");
+    printf("1. Tampilkan film yang tersedia\n");
+    printf("2. Pesan tiket\n");
+    printf("3. Edit Film dan Waktu Tayang\n");
+    printf("4. Keluar\n");
+    printf("Masukkan pilihan Anda: ");
+    scanf("%d", &pilihan);
+    return pilihan;
+}
     
 void menuPesan(char *waktu, int *jumlahTiket){
 	printf("Masukkan waktu tayang (JJ:MM): ");

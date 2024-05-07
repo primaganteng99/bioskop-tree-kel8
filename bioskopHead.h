@@ -26,6 +26,8 @@ void tambahWaktuTayang(Node *film, char *waktuMulai, int totalKursi);
 void pesanTiket(Node *film, char *waktuMulai, int jumlahTiket);
 void tampilkanFilm(Node *film);
 void deallocBioskop(Node *film);
+void editFilm(Node *film);
+void editWaktuTayang(Node *film);
 
 #endif
 
