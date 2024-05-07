@@ -20,10 +20,8 @@ int main() {
                 tampilkanFilm(bioskop);
                 break;
             case 2:
-                printf("Masukkan waktu tayang (JJ:MM): ");
-                scanf("%s", waktu);
-                printf("Masukkan jumlah tiket: ");
-                scanf("%d", &jumlahTiket);
+                menuPesan(waktu, jumlahTiket);
+                printf("\n%s %d", waktu, jumlahTiket);
                 pesanTiket(bioskop, waktu, jumlahTiket);
                 break;
             case 3:

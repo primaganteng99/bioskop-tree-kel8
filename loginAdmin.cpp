@@ -18,7 +18,7 @@ int loginAdmin(char *username, char *password) {
     char storedPassword[MAX_PASSWORD_LENGTH];
     
     while (!feof(file)) {
-        fscanf(file, "%s %s %s\n", storedUsername, storedPassword, storedPin);
+        fscanf(file, "%s %s %s\n", storedUsername, storedPassword);
         
         if (strcmp(username, storedUsername) == 0 && strcmp(password, storedPassword) == 0) {
             fclose(file);

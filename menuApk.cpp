@@ -14,3 +14,11 @@ int mainMenu(){
      scanf("%d", &pilihan);
      return pilihan;
     }
+    
+void menuPesan(char *waktu, int jumlahTiket){
+	printf("Masukkan waktu tayang (JJ:MM): ");
+ 	scanf("%s", waktu);
+  	printf("Masukkan jumlah tiket: ");
+   	scanf("%d", &jumlahTiket);
+   	printf("%d",jumlahTiket);
+}
