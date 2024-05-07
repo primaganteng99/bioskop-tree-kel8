@@ -20,5 +20,4 @@ void menuPesan(char *waktu, int *jumlahTiket){
  	scanf("%s", waktu);
   	printf("Masukkan jumlah tiket: ");
    	scanf("%d", jumlahTiket);
-   	printf("%d",jumlahTiket);
 }
