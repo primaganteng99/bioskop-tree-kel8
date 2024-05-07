@@ -5,20 +5,15 @@
 int main() {
 	
     Node *bioskop = buatNode("Siksa Kubur");
-    tambahWaktuTayang(bioskop, "10:00", 100);
-    tambahWaktuTayang(bioskop, "14:00", 150);
-    tambahWaktuTayang(bioskop, "20:00", 200);
+    tambahWaktuTayang(bioskop, "10:00", 20);
+    tambahWaktuTayang(bioskop, "14:00", 20);
+    tambahWaktuTayang(bioskop, "20:00", 20);
 
     int pilihan, jumlahTiket;
     char waktu[10];
 
     while (1) {
-        printf("\nSistem Pemesanan Tiket Bioskop\n");
-        printf("1. Tampilkan film yang tersedia\n");
-        printf("2. Pesan tiket\n");
-        printf("3. Keluar\n");
-        printf("Masukkan pilihan Anda: ");
-        scanf("%d", &pilihan);
+        pilihan = mainMenu();
 
         switch (pilihan) {
             case 1:

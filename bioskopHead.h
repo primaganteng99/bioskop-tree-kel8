@@ -16,6 +16,8 @@ typedef struct Node {
     WaktuTayang waktuTayang[MAX_CHILDREN];
 } Node;
 
+int mainMenu();
+
 Node* buatNode(char *judul);
 void tambahWaktuTayang(Node *film, char *waktuMulai, int totalKursi);
 void pesanTiket(Node *film, char *waktuMulai, int jumlahTiket);
