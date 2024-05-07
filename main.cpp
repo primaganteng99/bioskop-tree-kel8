@@ -20,7 +20,7 @@ int main() {
                 tampilkanFilm(bioskop);
                 break;
             case 2:
-                menuPesan(waktu, jumlahTiket);
+                menuPesan(waktu, &jumlahTiket);
                 printf("\n%s %d", waktu, jumlahTiket);
                 pesanTiket(bioskop, waktu, jumlahTiket);
                 break;
