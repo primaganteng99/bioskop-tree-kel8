@@ -48,5 +48,10 @@ void deallocBioskop(Node *film);
 void editFilm(Node *film);
 void editWaktuTayang(Node *film);
 
+bool Search (Isi_Tree P, infotype X);
+void PrintTree (Isi_Tree P, int Jml_Node);
+bool IsEmpty (Isi_Tree P);
+void Create_tree(Isi_Tree X, int Jml_Node);
+
 #endif
 

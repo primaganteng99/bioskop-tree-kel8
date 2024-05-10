@@ -3,6 +3,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+void Create_Bone(int Jml_Node){
+	
+	for(i = 1; i < jml_maks; i++){
+		P[i].info = '\0';
+	}
+	
+	printf("Berapa data yang ingin Anda masukkan (Maks 20): ");
+ 	scanf("%d", &Jml_Node);
+	if(Jml_Node > jml_maks){
+		printf("\nMelebihi batas input yaitu %d!\n\n", jml_maks);
+		system("pause");
+	}else{
+		Create_tree(P, Jml_Node);
+	}
+}
+
+
 void Create_tree(Isi_Tree X, int Jml_Node){
 	char input, parent;
 	int i, j, posisiParent, posisiBrother, temp;
@@ -49,7 +66,7 @@ void Create_tree(Isi_Tree X, int Jml_Node){
 	}
 }
 
-boolean IsEmpty (Isi_Tree P){ // memeriksa apakah tree kosong pada index ke-1
+bool IsEmpty (Isi_Tree P){ // memeriksa apakah tree kosong pada index ke-1
 	int i;
 	
 	for(i = 1; i < jml_maks; i++){
@@ -59,4 +76,27 @@ boolean IsEmpty (Isi_Tree P){ // memeriksa apakah tree kosong pada index ke-1
 	}
 	
 	return true;
+}
+
+void PrintTree (Isi_Tree P, int Jml_Node){
+	int i;
+	printf("info:     fs:     nb:     pr:\n");
+	printf("-----     ---     ---     ---\n");
+	for(i = 1; i <= Jml_Node; i++){ 
+		printf("%c ", P[i].info);
+		printf("        %d ", P[i].ps_fs);
+		printf("      %d ", P[i].ps_nb);
+		printf("      %d \n", P[i].ps_pr);
+	}
+	printf("-----------------------------\n");
+}
+
+bool Search (Isi_Tree P, infotype X){
+	int i;
+	for(i = 1; i <= jml_maks; i++){
+		if(P[i].info == X){
+			return true;
+		}
+	}
+	return false;
 }
