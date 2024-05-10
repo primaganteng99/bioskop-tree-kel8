@@ -4,6 +4,25 @@
 #define MAX_TITLE 50
 #define MAX_TIME 10
 
+//Maksimal node yang dapat ditampung dalam array
+#define jml_maks 20
+
+//Arah traversal
+#define kebawah 1
+#define keatas 2
+#define kekanan 3
+#define nil 0
+
+typedef char infotype;
+typedef int address;
+
+typedef struct { 
+	infotype info;
+	address ps_fs, ps_nb, ps_pr;
+}nbtree;
+
+typedef nbtree Isi_Tree[jml_maks+1];
+
 typedef struct WaktuTayang {
     char waktuMulai[MAX_TIME];
     int totalKursi;
