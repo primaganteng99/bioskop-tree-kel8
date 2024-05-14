@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-void Create_Bone(int Jml_Node){
+void Create_Bone(Isi_Tree X, int Jml_Node){
+	
+	Isi_Tree P; int i;
+	P[1].info = '\0';
 	
 	for(i = 1; i < jml_maks; i++){
 		P[i].info = '\0';
@@ -11,6 +14,7 @@ void Create_Bone(int Jml_Node){
 	
 	printf("Berapa data yang ingin Anda masukkan (Maks 20): ");
  	scanf("%d", &Jml_Node);
+ 	printf("Jumlah Node : %d", Jml_Node);
 	if(Jml_Node > jml_maks){
 		printf("\nMelebihi batas input yaitu %d!\n\n", jml_maks);
 		system("pause");
@@ -25,7 +29,7 @@ void Create_tree(Isi_Tree X, int Jml_Node){
 	int i, j, posisiParent, posisiBrother, temp;
 	
 	printf("Masukkan Root: ");
-	scanf(" %c", &input);
+	scanf(" %c", &input); //Misalnya Bioskop XXI
 	X[1].info = input;
 	
 	for(i = 2; i <= Jml_Node; i++){

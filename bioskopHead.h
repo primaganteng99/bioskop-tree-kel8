@@ -4,6 +4,11 @@
 #define MAX_TITLE 50
 #define MAX_TIME 10
 
+//#include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
 //Maksimal node yang dapat ditampung dalam array
 #define jml_maks 20
 
@@ -48,8 +53,9 @@ void deallocBioskop(Node *film);
 void editFilm(Node *film);
 void editWaktuTayang(Node *film);
 
+void Create_Bone(Isi_Tree X, int Jml_Node);
 bool Search (Isi_Tree P, infotype X);
-void PrintTree (Isi_Tree P, int Jml_Node);
+void PrintTree (Isi_Tree P, int Jml_Tree);
 bool IsEmpty (Isi_Tree P);
 void Create_tree(Isi_Tree X, int Jml_Node);
 
