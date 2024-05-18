@@ -7,12 +7,13 @@ int main() {
 	
 	int Jml_Node = 0;
 	Isi_Tree P; int i;
-	P[1].info = '\0';
+	//P[1].info = '\0';
 	
-	for(i = 1; i < jml_maks; i++){
-		P[i].info = '\0';
-	}
+	//for(i = 1; i < jml_maks; i++){
+	//	P[i].info = '\0';
+	//}
 	
+	/*
 	printf("  Program Non-Binary Tree ");
 	printf("\n<=========================>\n");
 	
@@ -23,17 +24,17 @@ int main() {
 		system("pause");
 	}else{
 		Create_tree(P, Jml_Node);
-	}
+	}*/
 	
-    Node *bioskop = buatNode("Siksa Kubur");
+    Node *bioskop = buatNode("Siksa Kubur");/*
     tambahWaktuTayang(bioskop, "10:00", 20);
     tambahWaktuTayang(bioskop, "14:00", 20);
-    tambahWaktuTayang(bioskop, "20:00", 20);
+    tambahWaktuTayang(bioskop, "20:00", 20);*/
 
     int pilihan, jumlahTiket;
     char waktu[10];
 
-	//Create_Bone(P, Jml_Node);
+	Create_Bone(P, &Jml_Node);
 	//Create_tree(P, Jml_Node);
 	//Search (Isi_Tree P, infotype X);
 	PrintTree (P, Jml_Node);
