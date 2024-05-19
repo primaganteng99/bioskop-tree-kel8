@@ -1,98 +1,120 @@
 #include "../bioskopHead.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
-void Create_Bone(Isi_Tree P, int *Jml_Node) {
-    int i;
-    for (i = 1; i <= jml_maks; i++) {
-        memset(P[i].info, '\0', sizeof(P[i].info));
-        P[i].ps_fs = 0;
-        P[i].ps_nb = 0;
-        P[i].ps_pr = 0;
-    }
+// Fungsi untuk membuat node baru
+Node* buatNode(char *nama) {
+    Node *node = (Node*)malloc(sizeof(Node));
+    strcpy(node->nama, nama);
+    node->firstSon = NULL;
+    node->nextBrother = NULL;
+    return node;
+}
 
-    printf("Berapa data yang ingin Anda masukkan (Maks 20): ");
-    scanf("%d", Jml_Node);
-    printf("Jumlah Node : %d\n", *Jml_Node);
-
-    if (*Jml_Node > jml_maks) {
-        printf("\nMelebihi batas input yaitu %d!\n\n", jml_maks);
-        system("pause");
+// Fungsi untuk menambah node sebagai anak pertama
+void tambahAnak(Node *parent, Node *child) {
+    if (parent->firstSon == NULL) {
+        parent->firstSon = child;
     } else {
-        Create_tree(P, *Jml_Node);
-    }
-}
-
-void Create_tree(Isi_Tree X, int Jml_Node) {
-    char input[50], parent[50];
-    int i, j, posisiParent, posisiBrother, temp;
-
-    printf("Masukkan Root: ");
-    scanf("%s", input);
-    strcpy(X[1].info, input);
-
-    for (i = 2; i <= Jml_Node; i++) {
-        printf("\nMasukkan Data: ");
-        scanf("%s", input);
-        printf("Pilih Parent Data: ");
-        scanf("%s", parent);
-
-        if (Search(X, parent)) {
-            j = 1;
-            while (strcmp(X[j].info, parent) != 0 && j <= jml_maks) {
-                ++j;
-            }
-            posisiParent = j;
-
-            if (X[posisiParent].ps_fs == 0) {
-                strcpy(X[i].info, input);
-                X[i].ps_pr = posisiParent;
-                X[i].ps_nb = 0;
-                X[posisiParent].ps_fs = i;
-            } else {
-                X[i].ps_pr = posisiParent;
-                temp = X[posisiParent].ps_fs;
-
-                while (X[temp].ps_nb != 0) {
-                    temp = X[temp].ps_nb;
-                }
-
-                X[temp].ps_nb = i;
-                X[i].ps_nb = 0;
-                strcpy(X[i].info, input);
-            }
-        } else {
-            printf("Tidak ada parent\n");
-            --i;
+        Node *temp = parent->firstSon;
+        while (temp->nextBrother != NULL) {
+            temp = temp->nextBrother;
         }
+        temp->nextBrother = child;
     }
 }
 
-bool IsEmpty(Isi_Tree P) {
-    for (int i = 1; i <= jml_maks; i++) {
-        if (P[i].info[0] != '\0') {
-            return false;
-        }
+// Fungsi untuk menampilkan tree
+void tampilkanTree(Node *root, int level) {
+    if (root == NULL) return;
+
+    for (int i = 0; i < level; i++) {
+        printf("  ");
     }
-    return true;
+    printf("%s\n", root->nama);
+
+    tampilkanTree(root->firstSon, level + 1);
+    tampilkanTree(root->nextBrother, level);
 }
 
-void PrintTree(Isi_Tree P, int Jml_Node) {
-    printf("info:     fs:     nb:     pr:\n");
-    printf("-----     ---     ---     ---\n");
-    for (int i = 1; i <= Jml_Node; i++) {
-        printf("%-10s %3d     %3d     %3d\n", P[i].info, P[i].ps_fs, P[i].ps_nb, P[i].ps_pr);
+// Fungsi untuk mencari node dalam tree berdasarkan nama
+Node* cariNode(Node *root, char *nama) {
+    if (root == NULL) return NULL;
+
+    if (strcmp(root->nama, nama) == 0) {
+        return root;
     }
-    printf("-----------------------------\n");
+
+    Node *result = cariNode(root->firstSon, nama);
+    if (result != NULL) {
+        return result;
+    }
+
+    return cariNode(root->nextBrother, nama);
 }
 
-bool Search(Isi_Tree P, infotype X) {
-    for (int i = 1; i <= jml_maks; i++) {
-        if (strcmp(P[i].info, X) == 0) {
-            return true;
-        }
+// Fungsi untuk menambah studio ke bioskop
+void tambahStudio(Node *bioskop) {
+    char nama[100];
+    printf("Masukkan nama studio: ");
+    scanf("%s", nama);
+
+    Node *studio = buatNode(nama);
+    tambahAnak(bioskop, studio);
+}
+
+// Fungsi untuk menambah film ke studio
+void tambahFilm(Node *bioskop) {
+    char nama[100];
+    printf("Masukkan nama film: ");
+    scanf("%s", nama);
+
+    char namaStudio[100];
+    printf("Masukkan nama studio yang menjadi parent: ");
+    scanf("%s", namaStudio);
+
+    Node *studio = cariNode(bioskop, namaStudio);
+    if (studio != NULL) {
+        Node *film = buatNode(nama);
+        tambahAnak(studio, film);
+    } else {
+        printf("Studio tidak ditemukan.\n");
     }
-    return false;
+}
+
+// Fungsi untuk menambah jam tayang ke film
+void tambahJamTayang(Node *bioskop) {
+    char nama[100];
+    printf("Masukkan jam tayang: ");
+    scanf("%s", nama);
+
+    char namaFilm[100];
+    printf("Masukkan nama film yang menjadi parent: ");
+    scanf("%s", namaFilm);
+
+    Node *film = cariNode(bioskop, namaFilm);
+    if (film != NULL) {
+        Node *jamTayang = buatNode(nama);
+        tambahAnak(film, jamTayang);
+    } else {
+        printf("Film tidak ditemukan.\n");
+    }
+}
+
+// Fungsi untuk menambah kursi ke jam tayang
+void tambahKursi(Node *bioskop) {
+    char nama[100];
+    printf("Masukkan nomor kursi: ");
+    scanf("%s", nama);
+
+    char namaJamTayang[100];
+    printf("Masukkan jam tayang yang menjadi parent: ");
+    scanf("%s", namaJamTayang);
+
+    Node *jamTayang = cariNode(bioskop, namaJamTayang);
+    if (jamTayang != NULL) {
+        Node *kursi = buatNode(nama);
+        tambahAnak(jamTayang, kursi);
+    } else {
+        printf("Jam tayang tidak ditemukan.\n");
+    }
 }
 

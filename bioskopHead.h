@@ -9,45 +9,29 @@
 // Maksimal node yang dapat ditampung dalam array
 #define jml_maks 20
 
-typedef char infotype[50];
-typedef int address;
-
-typedef struct {
-    infotype info;
-    address ps_fs, ps_nb, ps_pr;
-} nbtree;
-
-typedef nbtree Isi_Tree[jml_maks + 1];
-
-typedef struct {
-    char waktuMulai[10];
-    int totalKursi;
-    int sisaKursi;
-} WaktuTayang;
-
-typedef struct {
-    char judul[50];
-    int jumlahAnak;
-    WaktuTayang waktuTayang[10];
+// Definisi struct untuk node
+typedef struct Node {
+    char nama[100];
+    struct Node *firstSon;
+    struct Node *nextBrother;
 } Node;
 
+/* LOGIN DAN REGISTER*/
 int loginAdmin(char *username, char *password);
 void menuPesan(char *waktu, int *jumlahTiket);
+
+/* TAMPILAN */
 int mainMenu();
 
-Node* buatNode(char *judul);
-void tambahWaktuTayang(Node *film, char *waktuMulai, int totalKursi);
-void pesanTiket(Node *film, char *waktuMulai, int jumlahTiket);
-void tampilkanFilm(Node *film);
-void deallocBioskop(Node *film);
-void editFilm(Node *film);
-void editWaktuTayang(Node *film);
-
-void Create_Bone(Isi_Tree X, int *Jml_Node);
-bool Search(Isi_Tree P, infotype X);
-void PrintTree(Isi_Tree P, int Jml_Node);
-bool IsEmpty(Isi_Tree P);
-void Create_tree(Isi_Tree X, int Jml_Node);
+/* CREATE BIOSKOP INFRASTRUKTUR*/
+Node* buatNode(char *nama);
+void tambahAnak(Node *parent, Node *child);
+void tampilkanTree(Node *root, int level);
+Node* cariNode(Node *root, char *nama);
+void tambahStudio(Node *bioskop);
+void tambahFilm(Node *bioskop);
+void tambahJamTayang(Node *bioskop);
+void tambahKursi(Node *bioskop);
 
 #endif
 
