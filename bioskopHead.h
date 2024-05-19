@@ -21,6 +21,7 @@ int loginAdmin(char *username, char *password);
 
 /* TAMPILAN */
 void title();
+void clearScreen();
 int mainMenu();
 void menuBioskop(int *pilihan2);
 void menuPesan(char *waktu, int *jumlahTiket);

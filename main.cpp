@@ -9,16 +9,16 @@ int main() {
 	char username[50]; char password[50];
 	
     while (1) {
-    	title();
         pilihan = mainMenu();
 
         switch (pilihan) {
-        	system("cls");
         	title();
         	int pilihan2;
             case 1:
           	 if (loginAdmin(username, password)){
           	 	do {
+          	 		clearScreen();
+          	 		title();
           	 		menuBioskop(&pilihan2);
           	 		switch (pilihan2){
           	 			case 1:

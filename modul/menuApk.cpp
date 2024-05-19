@@ -50,3 +50,7 @@ void title(){
 
     fclose(file);
 }
+
+void clearScreen(){
+	system("cls");
+}
