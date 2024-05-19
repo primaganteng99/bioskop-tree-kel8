@@ -7,6 +7,7 @@
 int main() {
 	int pilihan;
 	char username[50]; char password[50];
+	Node *bioskop = NULL;
 	
     while (1) {
     	clearScreen();
@@ -24,10 +25,14 @@ int main() {
           	 		switch (pilihan2){
           	 			case 1:
           	 				int pilihan3;
+          	 				clearScreen();
+       	 					title();
+          	 				if (bioskop == NULL) {
+                                    bioskop = masukkanNamaBioskop(); // Inisialisasi bioskop jika belum ada
+                                }
           	 				do {
           	 					clearScreen();
           	 					title();
-          	 					Node *bioskop = masukkanNamaBioskop();
           	 					menuBioskop(&pilihan3);
           	 					switch (pilihan3){
           	 						case 1:
@@ -44,6 +49,7 @@ int main() {
 										break;
 									case 5:
 										tampilkanTree(bioskop, 0);
+										system("pause");
 										break;
 									case 6:
 										cariNodeDanTampilkanHasil(bioskop);
