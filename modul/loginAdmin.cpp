@@ -7,6 +7,7 @@
 #define MAX_PASSWORD_LENGTH 50
 
 int loginAdmin(char *username, char *password) {
+	return 1;
     FILE *file = fopen("database/users.txt", "r");
     if (file == NULL) {
         printf("Gagal membuka file.\n");

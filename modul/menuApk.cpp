@@ -5,14 +5,11 @@
 #include <stdbool.h>
 
 int mainMenu(){
-	
     int pilihan;
 
-    printf("\nSistem Pemesanan Tiket Bioskop\n");
-    printf("1. Tampilkan film yang tersedia\n");
-    printf("2. Pesan tiket\n");
-    printf("3. Edit Film dan Waktu Tayang\n");
-    printf("4. Keluar\n");
+    printf("1. Login\n");
+    printf("2. Register\n");
+    printf("3. Keluar\n");
     printf("Masukkan pilihan Anda: ");
     scanf("%d", &pilihan);
     return pilihan;
@@ -23,4 +20,33 @@ void menuPesan(char *waktu, int *jumlahTiket){
  	scanf("%s", waktu);
   	printf("Masukkan jumlah tiket: ");
    	scanf("%d", jumlahTiket);
+}
+
+void menuBioskop(int *pilihan2){
+	printf("\nMenu:\n");
+	printf("1. Tambah Studio\n");
+ 	printf("2. Tambah Film\n");
+  	printf("3. Tambah Jam Tayang\n");
+   	printf("4. Tambah Kursi\n");
+   	printf("5. Tampilkan Tree\n");
+   	printf("6. Cari Node\n");
+   	printf("7. Keluar\n");
+   	printf("Pilih opsi: ");
+   	scanf("%d", pilihan2);
+}
+
+void title(){
+	FILE *file = fopen("database/grafiti.txt", "r");
+    if (file == NULL) {
+        fprintf(stderr, "Gagal membuka file list_barang.txt.\n");
+        return;
+    }
+
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), file) != NULL) {
+		printf(" %s", buffer);
+    }
+    printf("\n");
+
+    fclose(file);
 }

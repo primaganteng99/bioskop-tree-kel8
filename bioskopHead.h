@@ -18,10 +18,12 @@ typedef struct Node {
 
 /* LOGIN DAN REGISTER*/
 int loginAdmin(char *username, char *password);
-void menuPesan(char *waktu, int *jumlahTiket);
 
 /* TAMPILAN */
+void title();
 int mainMenu();
+void menuBioskop(int *pilihan2);
+void menuPesan(char *waktu, int *jumlahTiket);
 
 /* CREATE BIOSKOP INFRASTRUKTUR*/
 Node* buatNode(char *nama);
