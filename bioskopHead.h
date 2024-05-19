@@ -23,7 +23,8 @@ int loginAdmin(char *username, char *password);
 void title();
 void clearScreen();
 int mainMenu();
-void menuBioskop(int *pilihan2);
+void menuMasuk(int *pilihan2);
+void menuBioskop(int *pilihan3);
 void menuPesan(char *waktu, int *jumlahTiket);
 
 /* CREATE BIOSKOP INFRASTRUKTUR*/

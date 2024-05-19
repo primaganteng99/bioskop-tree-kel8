@@ -22,7 +22,17 @@ void menuPesan(char *waktu, int *jumlahTiket){
    	scanf("%d", jumlahTiket);
 }
 
-void menuBioskop(int *pilihan2){
+void menuMasuk(int *pilihan2){
+	printf("1. Bioskop Management\n");
+	printf("2. \n");
+	printf("3. \n");
+	printf("4. \n");
+	printf("5. Logout\n");
+	printf("Masukan Pilihan Menu : ");
+	scanf("%d",pilihan2);
+}
+
+void menuBioskop(int *pilihan3){
 	printf("\nMenu:\n");
 	printf("1. Tambah Studio\n");
  	printf("2. Tambah Film\n");
@@ -32,7 +42,7 @@ void menuBioskop(int *pilihan2){
    	printf("6. Cari Node\n");
    	printf("7. Keluar\n");
    	printf("Pilih opsi: ");
-   	scanf("%d", pilihan2);
+   	scanf("%d", pilihan3);
 }
 
 void title(){
