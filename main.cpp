@@ -27,21 +27,32 @@ int main() {
           	 				do {
           	 					clearScreen();
           	 					title();
+          	 					Node *bioskop = masukkanNamaBioskop();
           	 					menuBioskop(&pilihan3);
           	 					switch (pilihan3){
           	 						case 1:
+          	 							tambahStudio(bioskop);
           	 							break;
           	 						case 2:
+          	 							tambahFilm(bioskop);
           	 							break;
 									case 3:
+										tambahJamTayang(bioskop);
 										break;
 									case 4:
+										tambahKursi(bioskop);
 										break;
 									case 5:
-										system("\npause");
-										break;   		
+										tampilkanTree(bioskop, 0);
+										break;
+									case 6:
+										cariNodeDanTampilkanHasil(bioskop);
+										break;
+									case 7:
+								 		system("pause"); 
+										break;    		
 								   }
-							   } while (pilihan3 != 5);
+							   } while (pilihan3 != 7);
           	 				break;
        	 				case 2:
        	 					

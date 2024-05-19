@@ -28,6 +28,7 @@ void menuBioskop(int *pilihan3);
 void menuPesan(char *waktu, int *jumlahTiket);
 
 /* CREATE BIOSKOP INFRASTRUKTUR*/
+Node* masukkanNamaBioskop();
 Node* buatNode(char *nama);
 void tambahAnak(Node *parent, Node *child);
 void tampilkanTree(Node *root, int level);
@@ -36,6 +37,7 @@ void tambahStudio(Node *bioskop);
 void tambahFilm(Node *bioskop);
 void tambahJamTayang(Node *bioskop);
 void tambahKursi(Node *bioskop);
+void cariNodeDanTampilkanHasil(Node *bioskop);
 
 #endif
 

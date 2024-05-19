@@ -51,6 +51,13 @@ Node* cariNode(Node *root, char *nama) {
     return cariNode(root->nextBrother, nama);
 }
 
+Node* masukkanNamaBioskop() {
+    char namaBioskop[100];
+    printf("Masukkan nama bioskop (root) : ");
+    scanf("%s", namaBioskop);
+    return buatNode(namaBioskop);
+}
+
 // Fungsi untuk menambah studio ke bioskop
 void tambahStudio(Node *bioskop) {
     char nama[100];
@@ -118,3 +125,14 @@ void tambahKursi(Node *bioskop) {
     }
 }
 
+void cariNodeDanTampilkanHasil(Node *bioskop) {
+    char namaCari[100];
+    printf("Masukkan nama yang ingin dicari: ");
+    scanf("%s", namaCari);
+    Node *ditemukan = cariNode(bioskop, namaCari);
+    if (ditemukan != NULL) {
+        printf("Node dengan nama '%s' ditemukan.\n", namaCari);
+    } else {
+        printf("Node dengan nama '%s' tidak ditemukan.\n", namaCari);
+    }
+}
