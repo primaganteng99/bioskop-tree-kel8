@@ -36,22 +36,34 @@ int main() {
           	 					menuBioskop(&pilihan3);
           	 					switch (pilihan3){
           	 						case 1:
+          	 							clearScreen();
+          	 							title();
           	 							tambahStudio(bioskop);
           	 							break;
           	 						case 2:
+       	 								clearScreen();
+          	 							title();
           	 							tambahFilm(bioskop);
           	 							break;
 									case 3:
+								 		 clearScreen();
+          	 							title();
 										tambahJamTayang(bioskop);
 										break;
 									case 4:
+										 clearScreen();
+          	 							title();
 										tambahKursi(bioskop);
 										break;
 									case 5:
+										 clearScreen();
+          	 							title();
 										tampilkanTree(bioskop, 0);
 										system("pause");
 										break;
 									case 6:
+										 clearScreen();
+          	 							title();
 										cariNodeDanTampilkanHasil(bioskop);
 										break;
 									case 7:
@@ -61,7 +73,8 @@ int main() {
 							   } while (pilihan3 != 7);
           	 				break;
        	 				case 2:
-       	 					
+       	 					registerAdmin(username, password);
+       	 					system("pause");
        	 					break;
  	 					case 3:
  	 						
@@ -76,6 +89,10 @@ int main() {
 			   }
                 break;
             case 2:
+            	clearScreen();
+				title();
+            	registerAdmin(username, password);
+				system("pause");
                 break;
             case 3:
             	printf("Keluar dari sistem.\n");
