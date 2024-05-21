@@ -18,6 +18,7 @@ typedef struct Node {
 
 /* LOGIN DAN REGISTER*/
 int loginAdmin(char *username, char *password);
+void registerAdmin(char *username, char *password);
 
 /* TAMPILAN */
 void title();

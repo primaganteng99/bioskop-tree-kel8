@@ -36,3 +36,7 @@ int loginAdmin(char *username, char *password) {
     fclose(file);
     return 0; // Login gagal
 }
+
+void registerAdmin(char *username, char *password){
+	
+}
