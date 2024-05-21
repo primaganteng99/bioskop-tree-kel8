@@ -20,7 +20,7 @@ int main() {
             	clearScreen();
 				title();
           	 if (loginAdmin(username, password)){
-          	 	system("cls");
+          	 	system("pause");
           	 	do {
           	 		clearScreen();
           	 		title();
