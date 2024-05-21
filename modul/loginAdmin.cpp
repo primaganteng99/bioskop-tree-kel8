@@ -8,6 +8,13 @@
 
 int loginAdmin(char *username, char *password) {
 	
+	printf("Login\n");
+	printf("Username : ");
+	scanf("%s",username);
+	
+	printf("Password : ");
+	scanf("%s",password);
+	
     FILE *file = fopen("database/adminAccount.txt", "r");
     if (file == NULL) {
         printf("Gagal membuka file.\n");
@@ -41,10 +48,10 @@ void registerAdmin(char *username, char *password){
 	
 	printf("Registrasi\n");
 	printf("Username : ");
-	scanf("%s\n",username);
+	scanf("%s",username);
 	
 	printf("Password : ");
-	scanf("%s\n",password);
+	scanf("%s",password);
 	
 	FILE *file = fopen("database/adminAccount.txt", "r");
 	if (file == NULL) {

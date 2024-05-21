@@ -17,7 +17,10 @@ int main() {
         switch (pilihan) {
         	int pilihan2;
             case 1:
+            	clearScreen();
+				title();
           	 if (loginAdmin(username, password)){
+          	 	system("cls");
           	 	do {
           	 		clearScreen();
           	 		title();
