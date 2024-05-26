@@ -23,26 +23,39 @@ void menuPesan(char *waktu, int *jumlahTiket){
 }
 
 void menuMasuk(int *pilihan2){
-	printf("1. Bioskop Management\n");
-	printf("2. \n");
-	printf("3. \n");
-	printf("4. \n");
+	printf("\nMenu Utama :\n");
+	printf("1. Kelola Bioskop\n");
+	printf("2. Pemesanan\n");
+	printf("3. Histori Pemesanan\n");
+	printf("4. Kontol\n");
 	printf("5. Logout\n");
 	printf("Masukan Pilihan Menu : ");
 	scanf("%d",pilihan2);
 }
 
 void menuBioskop(int *pilihan3){
-	printf("\nMenu:\n");
+	printf("\nMenu Kelola :\n");
 	printf("1. Tambah Studio\n");
  	printf("2. Tambah Film\n");
   	printf("3. Tambah Jam Tayang\n");
    	printf("4. Tambah Kursi\n");
    	printf("5. Tampilkan Tree\n");
    	printf("6. Cari Node\n");
-   	printf("7. Keluar\n");
+   	printf("7. Hapus Node\n");
+   	printf("8. Keluar\n");
    	printf("Pilih opsi: ");
    	scanf("%d", pilihan3);
+}
+
+void menuHapus(int *pilihan4) {
+    printf("\nMenu Hapus :\n");
+    printf("1. Hapus Studio\n");
+    printf("2. Hapus Film\n");
+    printf("3. Hapus Jam Tayang\n");
+    printf("4. Hapus Kursi\n");
+    printf("5. Kembali\n");
+    printf("Pilih opsi: ");
+    scanf("%d", pilihan4);
 }
 
 void title(){

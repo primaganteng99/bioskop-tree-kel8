@@ -28,17 +28,27 @@ void menuMasuk(int *pilihan2);
 void menuBioskop(int *pilihan3);
 void menuPesan(char *waktu, int *jumlahTiket);
 
+void menuHapus(int *pilihan4);
+
+
 /* CREATE BIOSKOP INFRASTRUKTUR*/
 Node* masukkanNamaBioskop();
 Node* buatNode(char *nama);
 void tambahAnak(Node *parent, Node *child);
 void tampilkanTree(Node *root, int level);
 Node* cariNode(Node *root, char *nama);
+
 void tambahStudio(Node *bioskop);
 void tambahFilm(Node *bioskop);
 void tambahJamTayang(Node *bioskop);
 void tambahKursi(Node *bioskop);
 void cariNodeDanTampilkanHasil(Node *bioskop);
 
+void hapusNode(Node *parent, char *nama);
+void hapusNodeEx(Node *bioskop);
+void hapusStudio(Node *bioskop);
+void hapusFilm(Node *bioskop);
+void hapusJamTayang(Node *bioskop);
+void hapusKursi(Node *bioskop);
 #endif
 
