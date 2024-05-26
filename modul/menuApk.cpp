@@ -6,7 +6,7 @@
 
 int mainMenu(){
     int pilihan;
-
+	printf("\nSelamat Datang :\n");
     printf("1. Login\n");
     printf("2. Register\n");
     printf("3. Keluar\n");

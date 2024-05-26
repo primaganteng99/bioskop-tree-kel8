@@ -79,7 +79,6 @@ int main() {
                                             clearScreen();
                                             title();
                                       		hapusNodeEx(bioskop);
-                                            system("pause");
                                             break;
                                         case 8:
                                             system("pause");

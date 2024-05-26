@@ -258,7 +258,6 @@ void hapusNodeEx(Node *bioskop) {
                 system("pause");
                 break;
             case 5:
-                system("pause");
                 break;
             default:
                 printf("Pilihan tidak valid.\n");
