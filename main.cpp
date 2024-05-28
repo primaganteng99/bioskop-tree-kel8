@@ -31,8 +31,10 @@ int main() {
                                 clearScreen();
                                 title();
                                 if (bioskop == NULL) {
-                                	bioskop = muatTreeDariFile("database/treeBioskop.txt");
-                                    //bioskop = masukkanNamaBioskop(); // Inisialisasi bioskop jika belum ada
+                                	bioskop = muatTreeDariFile("database/treeBioskop.txt"); 
+                                }
+                                if (bioskop == NULL) {
+                                	bioskop = masukkanNamaBioskop();
                                 }
                                 do {
                                     clearScreen();
