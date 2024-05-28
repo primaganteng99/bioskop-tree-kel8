@@ -138,7 +138,7 @@ void tambahFilm(Node *bioskop) {
 // Fungsi untuk menambah jam tayang ke film
 void tambahJamTayang(Node *bioskop) {
     char nama[100];
-    printf("\nMasukkan jam tayang: ");
+    printf("\nMasukkan jam tayang (JAM:MENIT) : ");
     scanf("%s", nama);
 
     char namaFilm[100];
