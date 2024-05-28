@@ -52,6 +52,16 @@ Node* cariNode(Node *root, char *nama) {
     return cariNode(root->nextBrother, nama);
 }
 
+Node* muatTreeDariFile(char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Gagal membuka file.\n");
+        return NULL;
+    }
+    
+    
+}
+
 Node* masukkanNamaBioskop() {
     char namaBioskop[100];
     printf("\nMasukkan nama bioskop (root) : ");
