@@ -1,0 +1,3 @@
+cinepit root
+STUDIO1 cinepit
+STUDIO2 cinepit

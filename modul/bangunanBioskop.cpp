@@ -6,6 +6,7 @@ Node* buatNode(char *nama) {
     strcpy(node->nama, nama);
     node->firstSon = NULL;
     node->nextBrother = NULL;
+    
     return node;
 }
 
@@ -55,6 +56,12 @@ Node* masukkanNamaBioskop() {
     char namaBioskop[100];
     printf("\nMasukkan nama bioskop (root) : ");
     scanf("%s", namaBioskop);
+    
+    FILE *file = fopen("database/treeBioskop.txt", "w");
+    fprintf(file,"%s root\n",namaBioskop);
+    
+    fclose(file);
+    
     return buatNode(namaBioskop);
 }
 
@@ -66,6 +73,11 @@ void tambahStudio(Node *bioskop) {
 
     Node *studio = buatNode(nama);
     tambahAnak(bioskop, studio);
+    
+    FILE *file = fopen("database/treeBioskop.txt", "a");
+    fprintf(file,"%s %s\n", nama, bioskop->nama);
+    
+    fclose(file);
 }
 
 // Fungsi untuk menambah film ke studio
@@ -82,6 +94,12 @@ void tambahFilm(Node *bioskop) {
     if (studio != NULL) {
         Node *film = buatNode(nama);
         tambahAnak(studio, film);
+        
+        FILE *file = fopen("database/treeBioskop.txt", "a");
+    	fprintf(file,"%s %s\n", nama, namaStudio);
+    
+    	fclose(file);
+        
     } else {
         printf("Studio tidak ditemukan.\n");
     }
@@ -101,6 +119,12 @@ void tambahJamTayang(Node *bioskop) {
     if (film != NULL) {
         Node *jamTayang = buatNode(nama);
         tambahAnak(film, jamTayang);
+        
+        FILE *file = fopen("database/treeBioskop.txt", "a");
+    	fprintf(file,"%s %s\n", nama, namaFilm);
+    
+    	fclose(file);
+        
     } else {
         printf("Film tidak ditemukan.\n");
     }
@@ -120,6 +144,12 @@ void tambahKursi(Node *bioskop) {
     if (jamTayang != NULL) {
         Node *kursi = buatNode(nama);
         tambahAnak(jamTayang, kursi);
+        
+        FILE *file = fopen("database/treeBioskop.txt", "a");
+    	fprintf(file,"%s %s\n", nama, namaJamTayang);
+    
+    	fclose(file);
+        
     } else {
         printf("Jam tayang tidak ditemukan.\n");
     }
