@@ -9,4 +9,6 @@ A1 13.50
 A2 13.50
 A1 11.30
 A2 11.30
-
+STUDIO3 cinepit
+AGAK_LAEN STUDIO3
+kons cinepit

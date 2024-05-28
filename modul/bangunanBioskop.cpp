@@ -203,6 +203,9 @@ void hapusNode(Node *parent, char *nama) {
         return;
     }
 
+	char storedChild[50];
+	char storedParent[50];
+	
     Node *curr = parent->firstSon;
     Node *prev = NULL;
 
@@ -213,6 +216,42 @@ void hapusNode(Node *parent, char *nama) {
             } else {
                 prev->nextBrother = curr->nextBrother;
             }
+            
+            FILE *file = fopen("database/treeBioskop.txt", "r"); // Buka file untuk membaca
+    		if (file == NULL) {
+        	printf("Gagal membuka file.\n");
+        	return;
+    		}
+    
+    
+    		FILE *tempFile = fopen("database/temp.txt", "w"); // Buka file sementara untuk menulis
+    		if (tempFile == NULL) {
+        	fclose(file);
+        	printf("Gagal membuka file sementara.\n");
+        	return;
+    		}
+    		
+    		while (fscanf(file, "%s %s", ) == 2) {
+        	if (strcmp(username, storedUsername) == 0) {
+               fprintf(tempFile, "%s %s %s %.2f %s\n", storedUsername, storedPassword, newPin, saldo, storedRole); // Menulis informasi pengguna yang dimodifikasi
+ 	   	    } else {
+            fprintf(tempFile, "%s %s %s %.2f %s\n", storedUsername, storedPassword, storedPin, saldo, storedRole); // Menyalin informasi pengguna lain tanpa modifikasi
+				  }
+    		}
+    
+    		fclose(file);
+    		fclose(tempFile);
+    
+    		// Menghapus file asli dan mengganti dengan file sementara
+			 if (remove("database/treeBioskop.txt") != 0) {
+        	 printf("Gagal menghapus file asli.\n");
+        	 return;
+    		 }
+    		 if (rename("database/temp.txt", "database/treeBioskop.txt") != 0) {
+   		  	 printf("Gagal mengganti nama file sementara.\n");
+      	  	 return;
+   		  	 }
+            
             free(curr);
             printf("Node dengan nama '%s' berhasil dihapus.\n", nama);
             return;
