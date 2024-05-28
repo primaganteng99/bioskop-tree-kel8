@@ -58,8 +58,28 @@ Node* muatTreeDariFile(char *filename) {
         printf("Gagal membuka file.\n");
         return NULL;
     }
-    
-    
+
+    Node *root = NULL;
+    char nama[100], parent[100];
+
+    while (fscanf(file, "%s %s", nama, parent) != EOF) {
+        Node *newNode = buatNode(nama);
+
+        if (strcmp(parent, "root") == 0) {
+            root = newNode;
+        } else {
+            Node *parentNode = cariNode(root, parent);
+            if (parentNode != NULL) {
+                tambahAnak(parentNode, newNode);
+            } else {
+                printf("Parent '%s' tidak ditemukan untuk node '%s'.\n", parent, nama);
+                free(newNode);
+            }
+        }
+    }
+
+    fclose(file);
+    return root;
 }
 
 Node* masukkanNamaBioskop() {

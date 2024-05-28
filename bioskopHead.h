@@ -50,5 +50,7 @@ void hapusStudio(Node *bioskop);
 void hapusFilm(Node *bioskop);
 void hapusJamTayang(Node *bioskop);
 void hapusKursi(Node *bioskop);
+
+Node* muatTreeDariFile(char *filename);
 #endif
 
