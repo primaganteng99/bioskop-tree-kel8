@@ -231,11 +231,11 @@ void hapusNode(Node *parent, char *nama) {
         	return;
     		}
     		
-    		while (fscanf(file, "%s %s", ) == 2) {
-        	if (strcmp(username, storedUsername) == 0) {
-               fprintf(tempFile, "%s %s %s %.2f %s\n", storedUsername, storedPassword, newPin, saldo, storedRole); // Menulis informasi pengguna yang dimodifikasi
+    		while (fscanf(file, "%s %s", storedChild, storedParent) == 2) {
+        	if (strcmp(nama, storedChild) == 0) {
+               //fprintf(tempFile, "%s %s\n", storedChild, storedParent); // Menulis informasi pengguna yang dimodifikasi
  	   	    } else {
-            fprintf(tempFile, "%s %s %s %.2f %s\n", storedUsername, storedPassword, storedPin, saldo, storedRole); // Menyalin informasi pengguna lain tanpa modifikasi
+            fprintf(tempFile, "%s %s\n", storedChild, storedParent); // Menyalin informasi pengguna lain tanpa modifikasi
 				  }
     		}
     
