@@ -1,4 +1,7 @@
 cineprim root empty
 studio1 cineprim empty
-film11 studio1 empty
-14:50 film11 empty
+the_marvel studio1 empty
+21:00 the_marvel empty
+A1 21:00 full
+A2 21:00 full
+A3 21:00 empty

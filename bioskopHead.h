@@ -61,9 +61,10 @@ void hapusNodeEx(Node *bioskop);
 
 
 /* PEMESANAN */
-
-//void pesanTiket(Node *bioskop);
-//void menuPesanTiket(Node *bioskop);
+void cetakTiket(char *film, char *jamTayang, char *kursi);
+bool cekWaktu(char *jamTayang);
+void pesanKursi(Node *bioskop);
+void menuPesanTiket(Node *bioskop);
 
 #endif
 
