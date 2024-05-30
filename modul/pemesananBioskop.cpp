@@ -151,5 +151,6 @@ void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], i
     for (int i = 0; i < jumlahKursi; i++) {
         printf("%s ", kursiDipesan[i]);
     }
+    printf("\n");
 }
 

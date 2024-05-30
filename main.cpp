@@ -93,6 +93,8 @@
 	                                } while (pilihan3 != 8);
 	                                break;
 	                            case 2:
+	                            	clearScreen();
+	                                            title();
 	                                pesanTiket(bioskop);
 	                                system("pause");
 	                                break;
