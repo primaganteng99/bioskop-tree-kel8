@@ -5,3 +5,8 @@ the_marvel studio1 empty
 A1 21:00 full
 A2 21:00 full
 A3 21:00 empty
+hulk studio1 empty
+17:00 hulk empty
+A1 17:00 empty
+A2 17:00 empty
+A3 17:00 empty

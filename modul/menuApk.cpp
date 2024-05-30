@@ -27,7 +27,7 @@ void menuMasuk(int *pilihan2){
 	printf("1. Kelola Bioskop\n");
 	printf("2. Pemesanan\n");
 	printf("3. Histori Pemesanan\n");
-	printf("4. Kontol\n");
+	printf("4. \n");
 	printf("5. Logout\n");
 	printf("Masukan Pilihan Menu : ");
 	scanf("%d",pilihan2);
