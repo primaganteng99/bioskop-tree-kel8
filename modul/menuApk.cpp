@@ -26,9 +26,7 @@ void menuMasuk(int *pilihan2){
 	printf("\nMenu Utama :\n");
 	printf("1. Kelola Bioskop\n");
 	printf("2. Pemesanan\n");
-	printf("3. Histori Pemesanan\n");
-	printf("4. \n");
-	printf("5. Logout\n");
+	printf("3. Logout\n");
 	printf("Masukan Pilihan Menu : ");
 	scanf("%d",pilihan2);
 }
@@ -68,28 +66,28 @@ void hapusNodeEx(Node *bioskop) {
             case 1:
                 clearScreen();
                 title();
-                tampilkanTree(bioskop, 0);
+                tampilkanTree(bioskop);
                 hapusStudio(bioskop);
                 system("pause");
                 break;
             case 2:
                 clearScreen();
                 title();
-                tampilkanTree(bioskop, 0);
+                tampilkanTree(bioskop);
                 hapusFilm(bioskop);
                 system("pause");
                 break;
             case 3:
                 clearScreen();
                 title();
-                tampilkanTree(bioskop, 0);
+                tampilkanTree(bioskop);
                 hapusJamTayang(bioskop);
                 system("pause");
                 break;
             case 4:
                 clearScreen();
                 title();
-                tampilkanTree(bioskop, 0);
+                tampilkanTree(bioskop);
                 hapusKursi(bioskop);
                 system("pause");
                 break;
@@ -102,6 +100,37 @@ void hapusNodeEx(Node *bioskop) {
     } while (pilihan4 != 5);
 }
 
+void menuPesan(Node *bioskop) {
+    int pilihan5;
+    do {
+        clearScreen();
+        title();
+        	printf("\nMenu Pemesanan :\n");
+    printf("1. Pesan Tiket\n");
+    printf("2. Lihat RIwayat\n");
+    printf("3. Kembali\n");
+    printf("Masukkan pilihan Anda: ");
+    scanf("%d", &pilihan5);
+        switch (pilihan5) {
+            case 1:
+                clearScreen();
+                title();
+                pesanTiket(bioskop);
+                system("pause");
+                break;
+            case 2:
+                clearScreen();
+                title();
+                system("pause");
+                break;
+            case 3:
+                break;
+            default:
+                printf("Pilihan tidak valid.\n");
+                break;
+        }
+    } while (pilihan5 != 3);
+}
 
 void title(){
 	FILE *file = fopen("database/grafiti.txt", "r");

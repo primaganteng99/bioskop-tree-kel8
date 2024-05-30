@@ -26,18 +26,52 @@ void tambahAnak(Node *parent, Node *child) {
     }
 }
 
-// Fungsi untuk menampilkan tree
-void tampilkanTree(Node *root, int level) {
-    if (root == NULL) return;
+void cetakHorizontal(Node *node, int level) {
+    if (node == NULL) return;
 
-    for (int i = 0; i < level; i++) {
+    Node *current = node;
+    int count = 0;
+    while (current != NULL) {
+        if (level == 3 || level == 4) {
+            printf("%s ", current->nama);
+            count++;
+            if (count % 10 == 0) {
+                printf("\n");
+            }
+        } else {
+            cetakHorizontal(current, level + 1);
+        }
+        current = current->nextBrother;
+    }
+    printf("\n");
+}
+
+void tampilkanTreeHelper(Node *node, int depth) {
+    if (node == NULL) return;
+
+    // Cetak nama node dengan indentasi sesuai kedalaman
+    for (int i = 0; i < depth; i++) {
         printf("  ");
     }
-    printf("%s\n", root->nama);
+    printf("%s\n", node->nama);
 
-    tampilkanTree(root->firstSon, level + 1);
-    tampilkanTree(root->nextBrother, level);
+    // Panggil fungsi rekursif untuk anak pertama
+    if (depth < 2 || (depth == 2 && node->firstSon != NULL)) {
+        tampilkanTreeHelper(node->firstSon, depth + 1);
+    } else {
+        // Jika node berada di level 3 dan tidak memiliki anak, cetak horizontal sejajar dengan level 2
+        cetakHorizontal(node->firstSon, depth + 1);
+    }
+
+    // Panggil fungsi rekursif untuk saudara kandung
+    tampilkanTreeHelper(node->nextBrother, depth);
 }
+
+void tampilkanTree(Node *root) {
+    // Panggil fungsi helper dengan node root dan depth 0
+    tampilkanTreeHelper(root, 0);
+}
+
 
 // Fungsi untuk mencari node dalam tree berdasarkan nama
 Node* cariNode(Node *root, char *nama) {
@@ -166,9 +200,9 @@ void tambahJamTayang(Node *bioskop) {
 
 // Fungsi untuk menambah kursi ke jam tayang
 void tambahKursi(Node *bioskop) {
-    char nama[100];
-    printf("\nMasukkan nomor kursi: ");
-    scanf("%s", nama);
+    int jumlahKursi;
+    printf("\nBerapa kursi yang ingin ditambahkan: ");
+    scanf("%d", &jumlahKursi);
 
     char namaJamTayang[100];
     printf("Masukkan jam tayang yang menjadi parent: ");
@@ -176,14 +210,28 @@ void tambahKursi(Node *bioskop) {
 
     Node *jamTayang = cariNode(bioskop, namaJamTayang);
     if (jamTayang != NULL) {
-        Node *kursi = buatNode(nama);
-        tambahAnak(jamTayang, kursi);
-        
-        FILE *file = fopen("database/treeBioskop.txt", "a");
-        fprintf(file, "%s %s empty\n", nama, namaJamTayang);
-        
-        fclose(file);
-        
+        char namaKursi[100];
+        char huruf = 'A';
+        int nomor = 1;
+
+        for (int i = 0; i < jumlahKursi; i++) {
+            sprintf(namaKursi, "%c%d", huruf, nomor);
+            Node *kursi = buatNode(namaKursi);
+            tambahAnak(jamTayang, kursi);
+
+            FILE *file = fopen("database/treeBioskop.txt", "a");
+            fprintf(file, "%s %s empty\n", namaKursi, namaJamTayang);
+            fclose(file);
+
+            if (nomor == 10) {
+                huruf++;
+                nomor = 1;
+            } else {
+                nomor++;
+            }
+        }
+
+        printf("%d kursi berhasil ditambahkan pada jam tayang %s.\n", jumlahKursi, namaJamTayang);
     } else {
         printf("Jam tayang tidak ditemukan.\n");
     }

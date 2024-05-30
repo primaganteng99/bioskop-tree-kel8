@@ -8,7 +8,7 @@
 	    int pilihan;
 	    char username[50], password[50];
 	    Node *bioskop = NULL;
-	    int pilihan2; // Pindahkan deklarasi di sini
+	    int pilihan2; 
 	    
 	    while (1) {
 	        clearScreen();
@@ -44,37 +44,37 @@
 	                                        case 1:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            tambahStudio(bioskop);
 	                                            break;
 	                                        case 2:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            tambahFilm(bioskop);
 	                                            break;
 	                                        case 3:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            tambahJamTayang(bioskop);
 	                                            break;
 	                                        case 4:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            tambahKursi(bioskop);
 	                                            break;
 	                                        case 5:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            system("pause");
 	                                            break;
 	                                        case 6:
 	                                            clearScreen();
 	                                            title();
-	                                            tampilkanTree(bioskop, 0);
+	                                            tampilkanTree(bioskop);
 	                                            cariNodeDanTampilkanHasil(bioskop);
 	                                            system("pause");
 	                                            break;
@@ -95,21 +95,17 @@
 	                            case 2:
 	                            	clearScreen();
 	                                            title();
-	                                pesanTiket(bioskop);
+	                                menuPesan(bioskop);
 	                                system("pause");
 	                                break;
 	                            case 3:
-	                                break;
-	                            case 4:
-	                                break;
-	                            case 5:
 	                                system("\npause");
 	                                break;
 	                            default:
 	                                printf("Pilihan tidak valid.\n");
 	                                break;
 	                        }
-	                    } while (pilihan2 != 5);
+	                    } while (pilihan2 != 3);
 	                }
 	                break;
 	            case 2:
