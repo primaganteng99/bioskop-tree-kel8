@@ -1,11 +1,13 @@
 #include "../bioskopHead.h"
-
-#include "../bioskopHead.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Fungsi untuk membuat node baru
 Node* buatNode(char *nama) {
     Node *node = (Node*)malloc(sizeof(Node));
     strcpy(node->nama, nama);
+    strcpy(node->state, "empty");
     node->firstSon = NULL;
     node->nextBrother = NULL;
     return node;
@@ -61,10 +63,11 @@ Node* muatTreeDariFile(char *filename) {
     }
 
     Node *root = NULL;
-    char nama[100], parent[100];
+    char nama[100], parent[100], state[100];
 
-    while (fscanf(file, "%s %s", nama, parent) != EOF) {
+    while (fscanf(file, "%s %s %s", nama, parent, state) != EOF) {
         Node *newNode = buatNode(nama);
+        strcpy(newNode->state, state);
 
         if (strcmp(parent, "root") == 0) {
             root = newNode;
@@ -89,7 +92,7 @@ Node* masukkanNamaBioskop() {
     scanf("%s", namaBioskop);
     
     FILE *file = fopen("database/treeBioskop.txt", "w");
-    fprintf(file,"%s root\n",namaBioskop);
+    fprintf(file, "%s root empty\n", namaBioskop);
     
     fclose(file);
     
@@ -106,7 +109,7 @@ void tambahStudio(Node *bioskop) {
     tambahAnak(bioskop, studio);
     
     FILE *file = fopen("database/treeBioskop.txt", "a");
-    fprintf(file,"%s %s\n", nama, bioskop->nama);
+    fprintf(file, "%s %s empty\n", nama, bioskop->nama);
     
     fclose(file);
 }
@@ -127,7 +130,7 @@ void tambahFilm(Node *bioskop) {
         tambahAnak(studio, film);
         
         FILE *file = fopen("database/treeBioskop.txt", "a");
-        fprintf(file,"%s %s\n", nama, namaStudio);
+        fprintf(file, "%s %s empty\n", nama, namaStudio);
         
         fclose(file);
         
@@ -152,7 +155,7 @@ void tambahJamTayang(Node *bioskop) {
         tambahAnak(film, jamTayang);
         
         FILE *file = fopen("database/treeBioskop.txt", "a");
-        fprintf(file,"%s %s\n", nama, namaFilm);
+        fprintf(file, "%s %s empty\n", nama, namaFilm);
         
         fclose(file);
         
@@ -177,12 +180,9 @@ void tambahKursi(Node *bioskop) {
         tambahAnak(jamTayang, kursi);
         
         FILE *file = fopen("database/treeBioskop.txt", "a");
-        FILE *file2 = fopen("database/pemesananBioskop.txt", "a");
-        fprintf(file,"%s %s\n", nama, namaJamTayang);
-        fprintf(file2,"%s %s empty\n", nama, namaJamTayang);
+        fprintf(file, "%s %s empty\n", nama, namaJamTayang);
         
         fclose(file);
-        fclose(file2);
         
     } else {
         printf("Jam tayang tidak ditemukan.\n");
@@ -201,6 +201,17 @@ void cariNodeDanTampilkanHasil(Node *bioskop) {
     }
 }
 
+// Fungsi untuk menghapus node dan seluruh anaknya secara rekursif
+void hapusNodeDanChild(Node *node) {
+    if (node == NULL) return;
+
+    hapusNodeDanChild(node->firstSon);
+    hapusNodeDanChild(node->nextBrother);
+
+    free(node);
+}
+
+// Fungsi untuk menghapus node
 void hapusNode(Node *parent, char *nama) {
     if (parent == NULL || parent->firstSon == NULL) {
         printf("Node dengan nama '%s' tidak ditemukan.\n", nama);
@@ -218,45 +229,8 @@ void hapusNode(Node *parent, char *nama) {
                 prev->nextBrother = curr->nextBrother;
             }
             // Menghapus node dan seluruh anaknya secara rekursif
+            curr->nextBrother = NULL; // Pastikan tidak ada pointer yang korup
             hapusNodeDanChild(curr);
-
-            // Hapus juga baris terkait di file pemesananBioskop.txt
-            FILE *file = fopen("database/pemesananBioskop.txt", "r");
-            if (file == NULL) {
-                printf("Gagal membuka file.\n");
-                return;
-            }
-
-            FILE *tempFile = fopen("database/tempPesan.txt", "w");
-            if (tempFile == NULL) {
-                fclose(file);
-                printf("Gagal membuka file sementara.\n");
-                return;
-            }
-
-            char storedChild[50], storedParent[50], storedState[50];
-            while (fscanf(file, "%s %s %s", storedChild, storedParent, storedState) == 3) {
-                if (strcmp(nama, storedChild) == 0 && strcmp(parent->nama, storedParent) == 0) {
-                    // no operation
-                } else {
-                    fprintf(tempFile, "%s %s %s\n", storedChild, storedParent, storedState); // Menyalin informasi lain tanpa modifikasi
-                }
-            }
-
-            fclose(file);
-            fclose(tempFile);
-
-            // Menghapus file asli dan mengganti dengan file sementara
-            if (remove("database/pemesananBioskop.txt") != 0) {
-                printf("Gagal menghapus file asli.\n");
-                return;
-            }
-            if (rename("database/tempPesan.txt", "database/pemesananBioskop.txt") != 0) {
-                printf("Gagal mengganti nama file sementara.\n");
-                return;
-            }
-
-            free(curr);
             printf("Node dengan nama '%s' telah dihapus.\n", nama);
             return;
         }
@@ -268,21 +242,10 @@ void hapusNode(Node *parent, char *nama) {
     printf("Node dengan nama '%s' tidak ditemukan.\n", nama);
 }
 
-// Fungsi untuk menghapus node dan seluruh anaknya secara rekursif
-void hapusNodeDanChild(Node *node) {
-    if (node == NULL) return;
-
-    hapusNodeDanChild(node->firstSon);
-    hapusNodeDanChild(node->nextBrother);
-
-    free(node);
-}
-
-
 void updateFile(Node *root, FILE *file, char *parentName) {
     if (root == NULL) return;
 
-    fprintf(file, "%s %s\n", root->nama, parentName);
+    fprintf(file, "%s %s %s\n", root->nama, parentName, root->state);
     updateFile(root->firstSon, file, root->nama);
     updateFile(root->nextBrother, file, parentName);
 }
@@ -358,49 +321,4 @@ void hapusKursi(Node *bioskop) {
     } else {
         printf("Jam tayang tidak ditemukan.\n");
     }
-}
-
-
-void hapusNodeEx(Node *bioskop) {
-    int pilihan4;
-    do {
-        clearScreen();
-        title();
-        menuHapus(&pilihan4);
-        switch (pilihan4) {
-            case 1:
-                clearScreen();
-                title();
-                tampilkanTree(bioskop, 0);
-                hapusStudio(bioskop);
-                system("pause");
-                break;
-            case 2:
-                clearScreen();
-                title();
-                tampilkanTree(bioskop, 0);
-                hapusFilm(bioskop);
-                system("pause");
-                break;
-            case 3:
-                clearScreen();
-                title();
-                tampilkanTree(bioskop, 0);
-                hapusJamTayang(bioskop);
-                system("pause");
-                break;
-            case 4:
-                clearScreen();
-                title();
-                tampilkanTree(bioskop, 0);
-                hapusKursi(bioskop);
-                system("pause");
-                break;
-            case 5:
-                break;
-            default:
-                printf("Pilihan tidak valid.\n");
-                break;
-        }
-    } while (pilihan4 != 5);
 }

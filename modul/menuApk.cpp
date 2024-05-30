@@ -58,6 +58,50 @@ void menuHapus(int *pilihan4) {
     scanf("%d", pilihan4);
 }
 
+void hapusNodeEx(Node *bioskop) {
+    int pilihan4;
+    do {
+        clearScreen();
+        title();
+        menuHapus(&pilihan4);
+        switch (pilihan4) {
+            case 1:
+                clearScreen();
+                title();
+                tampilkanTree(bioskop, 0);
+                hapusStudio(bioskop);
+                system("pause");
+                break;
+            case 2:
+                clearScreen();
+                title();
+                tampilkanTree(bioskop, 0);
+                hapusFilm(bioskop);
+                system("pause");
+                break;
+            case 3:
+                clearScreen();
+                title();
+                tampilkanTree(bioskop, 0);
+                hapusJamTayang(bioskop);
+                system("pause");
+                break;
+            case 4:
+                clearScreen();
+                title();
+                tampilkanTree(bioskop, 0);
+                hapusKursi(bioskop);
+                system("pause");
+                break;
+            case 5:
+                break;
+            default:
+                printf("Pilihan tidak valid.\n");
+                break;
+        }
+    } while (pilihan4 != 5);
+}
+
 
 void title(){
 	FILE *file = fopen("database/grafiti.txt", "r");

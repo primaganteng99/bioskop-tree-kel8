@@ -13,6 +13,7 @@
 // Definisi struct untuk node
 typedef struct Node {
     char nama[100];
+    char state[100];
     struct Node *firstSon;
     struct Node *nextBrother;
 } Node;
@@ -37,18 +38,26 @@ void tambahAnak(Node *parent, Node *child);
 void tampilkanTree(Node *root, int level);
 Node* cariNode(Node *root, char *nama);
 Node* muatTreeDariFile(char *filename);
+
 Node* masukkanNamaBioskop();
 void tambahStudio(Node *bioskop);
 void tambahFilm(Node *bioskop);
 void tambahJamTayang(Node *bioskop);
 void tambahKursi(Node *bioskop);
+
 void cariNodeDanTampilkanHasil(Node *bioskop);
-void hapusSemuaChild(Node *node);
-void hapusNode(Node *root, char *nama);
-void perbaruiFileTree(Node *root, FILE *file);
-void perbaruiFileSetelahHapus(Node *root);
+
+void hapusNode(Node *parent, char *nama);
 void hapusNodeDanChild(Node *node);
-void hapusNodeEx(Node *root);
+
+void updateFile(Node *root, FILE *file, char *parentName);
+void saveTreeToFile(Node *root, char *filename);
+
+void hapusStudio(Node *bioskop);
+void hapusFilm(Node *bioskop);
+void hapusJamTayang(Node *bioskop);
+void hapusKursi(Node *bioskop);
+void hapusNodeEx(Node *bioskop);
 
 
 /* PEMESANAN */
