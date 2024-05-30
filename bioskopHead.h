@@ -1,3 +1,4 @@
+// Dalam bioskopHead.h
 #ifndef BIOSKOPHEAD_H
 #define BIOSKOPHEAD_H
 
@@ -31,7 +32,6 @@ void menuBioskop(int *pilihan3);
 void menuPesan(char *waktu, int *jumlahTiket);
 void menuHapus(int *pilihan4);
 
-
 /* CREATE BIOSKOP INFRASTRUKTUR*/
 Node* buatNode(char *nama);
 void tambahAnak(Node *parent, Node *child);
@@ -59,12 +59,10 @@ void hapusJamTayang(Node *bioskop);
 void hapusKursi(Node *bioskop);
 void hapusNodeEx(Node *bioskop);
 
-
 /* PEMESANAN */
-void cetakTiket(char *film, char *jamTayang, char *kursi);
-bool cekWaktu(char *jamTayang);
-void pesanKursi(Node *bioskop);
-void menuPesanTiket(Node *bioskop);
+void pesanTiket(Node *bioskop);
+void tampilkanFilmDanJamTayang(Node *bioskop);
+void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], int jumlahKursi);
 
 #endif
 
