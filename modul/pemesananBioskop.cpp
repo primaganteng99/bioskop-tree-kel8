@@ -226,7 +226,7 @@ void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], i
         printf("%s ", kursiDipesan[i]);
     }
     printf("\n=============================================\n");
-    printf("            Tiket Bioskop\n");
+    printf("            SELAMAT MENONTON MANIEZ\n");
     printf("=============================================\n");
     printf("\n");
 }
