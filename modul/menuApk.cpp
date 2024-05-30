@@ -58,6 +58,7 @@ void menuHapus(int *pilihan4) {
     scanf("%d", pilihan4);
 }
 
+
 void title(){
 	FILE *file = fopen("database/grafiti.txt", "r");
     if (file == NULL) {

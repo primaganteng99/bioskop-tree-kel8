@@ -93,7 +93,7 @@ int main() {
                                 } while (pilihan3 != 8);
                                 break;
                             case 2:
-                                registerAdmin(username, password);
+                                //menuPesanTiket(bioskop);
                                 system("pause");
                                 break;
                             case 3:

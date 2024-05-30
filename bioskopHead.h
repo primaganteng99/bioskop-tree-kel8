@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 
 // Maksimal node yang dapat ditampung dalam array
 #define jml_maks 20
@@ -27,30 +28,33 @@ int mainMenu();
 void menuMasuk(int *pilihan2);
 void menuBioskop(int *pilihan3);
 void menuPesan(char *waktu, int *jumlahTiket);
-
 void menuHapus(int *pilihan4);
 
 
 /* CREATE BIOSKOP INFRASTRUKTUR*/
-Node* masukkanNamaBioskop();
 Node* buatNode(char *nama);
 void tambahAnak(Node *parent, Node *child);
 void tampilkanTree(Node *root, int level);
 Node* cariNode(Node *root, char *nama);
-
+Node* muatTreeDariFile(char *filename);
+Node* masukkanNamaBioskop();
 void tambahStudio(Node *bioskop);
 void tambahFilm(Node *bioskop);
 void tambahJamTayang(Node *bioskop);
 void tambahKursi(Node *bioskop);
 void cariNodeDanTampilkanHasil(Node *bioskop);
+void hapusSemuaChild(Node *node);
+void hapusNode(Node *root, char *nama);
+void perbaruiFileTree(Node *root, FILE *file);
+void perbaruiFileSetelahHapus(Node *root);
+void hapusNodeDanChild(Node *node);
+void hapusNodeEx(Node *root);
 
-void hapusNode(Node *parent, char *nama);
-void hapusNodeEx(Node *bioskop);
-void hapusStudio(Node *bioskop);
-void hapusFilm(Node *bioskop);
-void hapusJamTayang(Node *bioskop);
-void hapusKursi(Node *bioskop);
 
-Node* muatTreeDariFile(char *filename);
+/* PEMESANAN */
+
+//void pesanTiket(Node *bioskop);
+//void menuPesanTiket(Node *bioskop);
+
 #endif
 

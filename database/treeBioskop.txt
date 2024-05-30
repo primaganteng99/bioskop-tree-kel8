@@ -1,1 +1,4 @@
-CINEPRIM root
+cineprim root
+studio1 cineprim
+siksakubur studio1
+14:30 siksakubur
