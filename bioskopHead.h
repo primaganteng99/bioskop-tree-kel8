@@ -32,6 +32,7 @@
 	void menuPesan(char *waktu, int *jumlahTiket);
 	void menuHapus(int *pilihan4);
 	void menuPesan(Node *bioskop);
+	void tampilkanHistoriTransaksi();
 	
 	/* CREATE BIOSKOP INFRASTRUKTUR*/
 	Node* buatNode(char *nama);

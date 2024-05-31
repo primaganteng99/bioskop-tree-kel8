@@ -1,0 +1,12 @@
+Tanggal: 31-05-2024
+Film: GUNDALA
+Jam Tayang: 12:00
+Kursi yang dipesan: B5 
+Total Harga: Rp 35000
+---------------------------------------------
+Tanggal: 31-05-2024
+Film: GUNDALA
+Jam Tayang: 12:00
+Kursi yang dipesan: A5 A6 
+Total Harga: Rp 70000
+---------------------------------------------

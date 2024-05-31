@@ -172,6 +172,7 @@ void menuPesan(Node *bioskop) {
             case 2:
                 clearScreen();
                 title();
+                tampilkanHistoriTransaksi();
                 system("pause");
                 break;
             case 3:

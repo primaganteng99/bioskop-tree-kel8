@@ -26,6 +26,7 @@ void tampilkanFilmDanJamTayang(Node *bioskop) {
     // Panggil fungsi helper dengan node bioskop dan depth 0
     tampilkanFilmDanJamTayangHelper(bioskop, 0);
 }
+
 // Fungsi untuk menampilkan diagram kursi beserta nama kursi
 void tampilkanDiagramKursi(Node *jamTayang) {
     printf("Posisi Kursi:\n");
@@ -83,6 +84,28 @@ void tampilkanKursiTersedia(Node *jamTayang) {
         printf("Tidak ada kursi tersedia.");
     }
     printf("\n");
+}
+
+// Fungsi untuk menambahkan entri ke file histori transaksi
+void tambahKeHistori(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], int jumlahKursi, int totalHarga) {
+    FILE *file = fopen("pemesananBioskop.txt", "a");
+    if (file == NULL) {
+        printf("Gagal membuka file histori transaksi.\n");
+        return;
+    }
+
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    fprintf(file, "Tanggal: %02d-%02d-%d\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+    fprintf(file, "Film: %s\n", namaFilm);
+    fprintf(file, "Jam Tayang: %s\n", namaJamTayang);
+    fprintf(file, "Kursi yang dipesan: ");
+    for (int i = 0; i < jumlahKursi; i++) {
+        fprintf(file, "%s ", kursiDipesan[i]);
+    }
+    fprintf(file, "\nTotal Harga: Rp %d\n", totalHarga);
+    fprintf(file, "---------------------------------------------\n");
+    fclose(file);
 }
 
 // Fungsi untuk memesan tiket
@@ -210,6 +233,9 @@ void pesanTiket(Node *bioskop) {
         saveTreeToFile(bioskop, "database/treeBioskop.txt");
         printf("Pembayaran berhasil. Tiket telah dicetak.\n");
         cetakTiket(namaFilm, namaJamTayang, kursiDipesan, jumlahKursi); // Memanggil prosedur cetakTiket
+
+        // Tambahkan transaksi ke histori
+        tambahKeHistori(namaFilm, namaJamTayang, kursiDipesan, jumlahKursi, totalHarga);
     } else {
         printf("Pesanan dibatalkan.\n");
     }
@@ -229,4 +255,19 @@ void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], i
     printf("            SELAMAT MENONTON MANIEZ\n");
     printf("=============================================\n");
     printf("\n");
+}
+
+// Fungsi untuk menampilkan histori transaksi
+void tampilkanHistoriTransaksi() {
+    FILE *file = fopen("pemesananBioskop.txt", "r");
+    if (file == NULL) {
+        printf("Tidak ada histori transaksi.\n");
+        return;
+    }
+
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        printf("%s", line);
+    }
+    fclose(file);
 }
