@@ -119,7 +119,7 @@ B2 12:00 empty
 B3 12:00 empty
 B4 12:00 empty
 B5 12:00 full
-B6 12:00 empty
+B6 12:00 full
 B7 12:00 empty
 B8 12:00 empty
 B9 12:00 empty

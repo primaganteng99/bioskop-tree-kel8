@@ -19,6 +19,8 @@
 	    struct Node *nextBrother;
 	} Node;
 	
+
+	
 	/* LOGIN DAN REGISTER*/
 	int loginAdmin(char *username, char *password);
 	void registerAdmin(char *username, char *password);
@@ -62,9 +64,15 @@
 	void hapusNodeEx(Node *bioskop);
 	
 	/* PEMESANAN */
-	void pesanTiket(Node *bioskop);
+	void tampilkanFilmDanJamTayangHelper(Node *node, int depth);
 	void tampilkanFilmDanJamTayang(Node *bioskop);
+	void tampilkanDiagramKursi(Node *jamTayang);
+	int waktuSudahMelewati(char *jamTayang);
+	void tampilkanKursiTersedia(Node *jamTayang);
+	void tambahKeHistori(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], int jumlahKursi, int totalHarga);
+	void pesanTiket(Node *bioskop);
 	void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], int jumlahKursi);
+	void tampilkanHistoriTransaksi();
 	
 	#endif
 

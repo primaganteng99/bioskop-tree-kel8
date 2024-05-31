@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=6
+UnitCount=5
 
 [VersionInfo]
 Major=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=modul\bangunanBioskop.cpp
+FileName=modul\roy.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=modul\loginAdmin.cpp
+FileName=modul\ihsan.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -111,7 +111,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=modul\menuApk.cpp
+FileName=modul\prima.cpp
 CompileCpp=1
 Folder=
 Compile=1

@@ -158,8 +158,9 @@ void menuPesan(Node *bioskop) {
         title();
         	printf("\nMenu Pemesanan :\n");
     printf("1. Pesan Tiket\n");
-    printf("2. Lihat RIwayat\n");
-    printf("3. Kembali\n");
+    printf("2. Lihat Riwayat\n");
+    printf("3. Lihat Antrian\n");
+    printf("4. Kembali\n");
     printf("Masukkan pilihan Anda: ");
     scanf("%d", &pilihan5);
         switch (pilihan5) {
@@ -176,12 +177,18 @@ void menuPesan(Node *bioskop) {
                 system("pause");
                 break;
             case 3:
+            	//prosesAntrian(&antrian, bioskop);
+            	system("pause");
                 break;
+            case 4:
+            	clearScreen();
+                title();
+                system("pause");
             default:
                 printf("Pilihan tidak valid.\n");
                 break;
         }
-    } while (pilihan5 != 3);
+    } while (pilihan5 != 4);
 }
 
 void title(){

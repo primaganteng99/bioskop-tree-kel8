@@ -9,7 +9,6 @@
 	    char username[50], password[50];
 	    Node *bioskop = NULL;
 	    int pilihan2; 
-	    
 	    while (1) {
 	        clearScreen();
 	        title();

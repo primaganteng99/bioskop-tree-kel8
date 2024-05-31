@@ -32,7 +32,7 @@ void tampilkanDiagramKursi(Node *jamTayang) {
     printf("Posisi Kursi:\n");
     printf("------------------------------------------------------------------------------------------");
     printf("\n			               S C R E E N			            \n");
-    printf("------------------------------------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------------------------------\n\n\n\n");
     Node *kursi = jamTayang->firstSon;
     int count = 0;
     while (kursi != NULL) {
@@ -88,7 +88,7 @@ void tampilkanKursiTersedia(Node *jamTayang) {
 
 // Fungsi untuk menambahkan entri ke file histori transaksi
 void tambahKeHistori(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], int jumlahKursi, int totalHarga) {
-    FILE *file = fopen("pemesananBioskop.txt", "a");
+    FILE *file = fopen("database/pemesananBioskop.txt", "a");
     if (file == NULL) {
         printf("Gagal membuka file histori transaksi.\n");
         return;
@@ -132,7 +132,7 @@ void pesanTiket(Node *bioskop) {
         return;
     }
 
-    printf("Masukkan jam tayang (format HH:MM): ");
+    printf("Masukkan jam tayang (JJ:MM): ");
     scanf("%s", namaJamTayang);
     Node *jamTayang = cariNode(film, namaJamTayang);
     if (jamTayang == NULL) {
@@ -259,7 +259,7 @@ void cetakTiket(char *namaFilm, char *namaJamTayang, char kursiDipesan[][100], i
 
 // Fungsi untuk menampilkan histori transaksi
 void tampilkanHistoriTransaksi() {
-    FILE *file = fopen("pemesananBioskop.txt", "r");
+    FILE *file = fopen("database/pemesananBioskop.txt", "r");
     if (file == NULL) {
         printf("Tidak ada histori transaksi.\n");
         return;
