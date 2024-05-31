@@ -94,7 +94,7 @@
 	                                break;
 	                            case 2:
 	                            	clearScreen();
-	                                            title();
+	                                title();
 	                                menuPesan(bioskop);
 	                                system("pause");
 	                                break;

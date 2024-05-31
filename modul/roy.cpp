@@ -4,6 +4,57 @@
 #include <string.h>
 #include <stdbool.h>
 
+#define MAX_USERNAME_LENGTH 50
+#define MAX_PASSWORD_LENGTH 50
+
+void registerAdmin(char *username, char *password){
+	
+	printf("\n--------------\n");
+	printf("| Registrasi |\n");
+	printf("--------------\n");
+	printf("Username : ");
+	scanf("%s",username);
+	
+	printf("Password : ");
+	scanf("%s",password);
+	
+	FILE *file = fopen("database/adminAccount.txt", "r");
+	if (file == NULL) {
+        printf("Gagal membuka file.\n");
+        return;
+    }
+    rewind(file);
+    
+    char storedUsername[MAX_USERNAME_LENGTH];
+    char storedPassword[MAX_PASSWORD_LENGTH];
+	
+	    while (fscanf(file, "%s %s\n", storedUsername, storedPassword) == 2) {
+        if (strcmp(username, storedUsername) == 0) {
+            fclose(file);
+            printf("====================\n");
+    		printf("= Registrasi Gagal =\n");
+    		printf("====================\n");
+            printf("Username sudah digunakan.\n");
+
+            return;
+        }
+	}
+	fclose(file);
+	
+	file = fopen("database/adminAccount.txt", "a");
+	if (file == NULL) {
+        printf("Gagal membuka file.\n");
+        return;
+    }
+    
+    fprintf(file, "%s %s\n", username, password);
+    fclose(file);
+    
+    printf("=======================\n");
+    printf("= Registrasi berhasil =\n");
+    printf("=======================\n");
+}
+
 int mainMenu(){
     int pilihan;
 	printf("\nSelamat Datang :\n");
@@ -135,7 +186,7 @@ void menuPesan(Node *bioskop) {
 void title(){
 	FILE *file = fopen("database/grafiti.txt", "r");
     if (file == NULL) {
-        fprintf(stderr, "Gagal membuka file list_barang.txt.\n");
+        fprintf(stderr, "Gagal membuka file grafiti.txt.\n");
         return;
     }
 

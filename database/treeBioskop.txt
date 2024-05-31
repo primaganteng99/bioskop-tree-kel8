@@ -156,3 +156,4 @@ E8 03:30 empty
 E9 03:30 empty
 E10 03:30 empty
 STUDIO2 CINEPRIM empty
+STUDIO1 CINEPRIM empty
